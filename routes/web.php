@@ -43,3 +43,4 @@ Route::get('product_details/{id}', [ProductController::class, 'product_details']
 Route::get('add_cart/{id}', [ProductController::class, 'add_cart'])->name('add_cart')->middleware(['auth', 'verified']); //if the user is authenticated and verified, they can add products to the cart
 Route::get('my_cart', [ProductController::class, 'my_cart'])->name('my_cart')->middleware(['auth', 'verified']);
 Route::get('remove_my_cart/{id}', [ProductController::class, 'remove_my_cart'])->name('remove_my_cart')->middleware(['auth', 'verified']);
+Route::post('order_confirm', [ProductController::class, 'order_confirm'])->name('order_confirm')->middleware(['auth', 'verified']);
