@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Order;
 use Dotenv\Util\Str;
 
 class AdminController extends Controller
@@ -53,5 +54,10 @@ class AdminController extends Controller
             toastr()->closeButton()->timeOut(5000)->addError('Category not found!');
         }
         return redirect()->route('view_category');
+    }
+
+    public function view_orders(){
+        $orders = Order::all(); // Assuming you have an Order model to fetch orders
+        return view('admin.order', compact('orders'));
     }
 }
