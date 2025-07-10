@@ -45,3 +45,6 @@ Route::get('my_cart', [ProductController::class, 'my_cart'])->name('my_cart')->m
 Route::get('remove_my_cart/{id}', [ProductController::class, 'remove_my_cart'])->name('remove_my_cart')->middleware(['auth', 'verified']);
 Route::post('order_confirm', [ProductController::class, 'order_confirm'])->name('order_confirm')->middleware(['auth', 'verified']);
 Route::get('view_orders', [AdminController::class, 'view_orders'])->name('view_orders')->middleware(['auth', 'admin']);
+Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way'])->name('on_the_way')->middleware(['auth', 'admin']);
+Route::get('delivered/{id}', [AdminController::class, 'delivered'])->name('delivered')->middleware(['auth', 'admin']);
+

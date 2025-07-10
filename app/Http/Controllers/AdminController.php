@@ -60,4 +60,27 @@ class AdminController extends Controller
         $orders = Order::all(); // Assuming you have an Order model to fetch orders
         return view('admin.order', compact('orders'));
     }
+
+    public function on_the_way($id){
+        $order = Order::find($id);
+        if($order){
+            $order->status = 'on the way';
+            $order->save();
+            toastr()->closeButton()->timeOut(5000)->addSuccess('Order status updated to "on the way"!');
+        } else {
+            toastr()->closeButton()->timeOut(5000)->addError('Order not found!');
+        }
+        return redirect()->back();
+    }
+    public function delivered($id){
+        $order = Order::find($id);
+        if($order){
+            $order->status = 'delivered';
+            $order->save();
+            toastr()->closeButton()->timeOut(5000)->addSuccess('Order status updated to "delivered"!');
+        } else {
+            toastr()->closeButton()->timeOut(5000)->addError('Order not found!');
+        }
+        return redirect()->back();
+    }
 }
