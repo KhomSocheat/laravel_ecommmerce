@@ -47,4 +47,6 @@ Route::post('order_confirm', [ProductController::class, 'order_confirm'])->name(
 Route::get('view_orders', [AdminController::class, 'view_orders'])->name('view_orders')->middleware(['auth', 'admin']);
 Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way'])->name('on_the_way')->middleware(['auth', 'admin']);
 Route::get('delivered/{id}', [AdminController::class, 'delivered'])->name('delivered')->middleware(['auth', 'admin']);
+Route::get('print_invoice/{id}', [AdminController::class, 'print_invoice'])->name('print_invoice')->middleware(['auth', 'admin']);
+
 

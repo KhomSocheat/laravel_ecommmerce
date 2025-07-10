@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Order;
 use Dotenv\Util\Str;
+ use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
@@ -83,4 +84,15 @@ class AdminController extends Controller
         }
         return redirect()->back();
     }
+    public function print_invoice($id){
+        //Function to generate PDF invoice for an order
+        $order = Order::find($id);
+        if(!$order){
+            toastr()->closeButton()->timeOut(5000)->addError('Order not found!');
+            return redirect()->back();
+        }
+        $pdf = Pdf::loadView('admin.invoice', ['order' => $order]);
+        return $pdf->download('invoice.pdf');
+    }
+ 
 }

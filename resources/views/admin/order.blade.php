@@ -15,6 +15,7 @@
         <div class="page-header">
             <div class="container-fluid">
                 <h1 class="h3 mb-4 text-white mt-5">Orders</h1>
+             
                 <table class="table table-bordered table-dark text-white text-center mb-0 mt-5">
                     <thead>
                         <tr>
@@ -26,6 +27,7 @@
                             <th>Total Price</th>
                             <th>Status</th>
                             <th>Change Status</th>
+                            <th>Invoice</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +56,9 @@
                                         way</a>
                                     <a href="{{ route('on_the_way', $order->id) }}"
                                         class="btn btn-success">Delivered</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('print_invoice',$order->id) }}" class="btn btn-secondary">Print Invoice</a>
                                 </td>
                             </tr>
                         @endforeach

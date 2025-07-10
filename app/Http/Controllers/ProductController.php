@@ -205,8 +205,6 @@ class ProductController extends Controller
         // Clear the cart after order confirmation
         Cart::where('user_id', $user_id)->delete();
         toastr()->closeButton()->timeOut(5000)->addSuccess('Order placed successfully!');
-
-        
         return redirect()->back();
     }
 }
