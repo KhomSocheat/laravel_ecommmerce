@@ -3,16 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        //count user product order and delivered to display on admin dashboard
+        $user = User::where('usertype','user')->get()->count(); // Count the number of users with usertype 'user'
+        $products = Product::all()->count(); // Get all products from the database
+        $order = Order::all()->count(); // Get all orders from the database
+        $delevered = Order::where('status', 'delivered')->count(); // Count the number of delivered orders
+        return view('admin.index', compact('user', 'products', 'order', 'delevered'));
     }
     public function login_home()
     {
