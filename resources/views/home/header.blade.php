@@ -38,7 +38,7 @@
                     @auth
                             <a href="{{ route('my_cart') }}" class="">
                                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                    [{{ $count }}]
+                                    [{{ $count ?? 0 }}]
                             </a>
                             <form method="POST" action="{{ route('logout') }}">
                             @csrf

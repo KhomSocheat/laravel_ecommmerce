@@ -15,7 +15,7 @@
         <div class="page-header">
             <div class="container-fluid">
                 <h1 class="h3 mb-4 text-white mt-5">Orders</h1>
-             
+
                 <table class="table table-bordered table-dark text-white text-center mb-0 mt-5">
                     <thead>
                         <tr>
@@ -54,7 +54,7 @@
                                 <td>
                                     <a href="{{ route('on_the_way', $order->id) }}" class="btn btn-primary">On the
                                         way</a>
-                                    <a href="{{ route('on_the_way', $order->id) }}"
+                                    <a href="{{ route('delivered', $order->id) }}"
                                         class="btn btn-success">Delivered</a>
                                 </td>
                                 <td>

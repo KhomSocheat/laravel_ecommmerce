@@ -7,6 +7,7 @@
          </div>
          <div class="row">
 
+            {{-- loop data from product controller and use route product details to details product--}}
             @foreach ($products as $item)
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="box">

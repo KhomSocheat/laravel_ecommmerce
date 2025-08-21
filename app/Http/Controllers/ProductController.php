@@ -166,12 +166,14 @@ class ProductController extends Controller
     }
     public function my_cart()
     {
-
         if (Auth::id()) {
             $user = Auth::user();
             $userid = $user->id; // Get the ID of the authenticated user
             $count = Cart::where('user_id', $userid)->count();
             $cart = Cart::where('user_id', $userid)->get(); // Get all cart items for this user
+        } else {
+            $count = 0;
+            $cart = collect(); // Empty collection for non-authenticated users
         }
         return view('home.my_cart', compact('count', 'cart'));
     }
@@ -181,7 +183,7 @@ class ProductController extends Controller
         $cart = Cart::findOrFail($id);
         // Delete the cart item
         $cart->delete();
-
+        
         toastr()->closeButton()->timeOut(5000)->addSuccess('Product removed successfully!');
         return redirect()->back();
     }

@@ -22,8 +22,13 @@ class AdminController extends Controller
         ]);
         $category = new Category();
         $category->category_name = $request->category_name;
-        $category->save();
-        toastr()->closeButton()->timeOut(5000)->addSuccess('Category added successfully!');
+
+        if($category){
+             $category->save();
+            toastr()->closeButton()->timeOut(5000)->addSuccess('Category added successfully!');
+        }else{
+            toastr()->closeButton()->timeOut(5000)->addError('Failed to add category!');
+        }
         return redirect()->back();
     }
     public function delete_category(String $id){
@@ -94,5 +99,5 @@ class AdminController extends Controller
         $pdf = Pdf::loadView('admin.invoice', ['order' => $order]);
         return $pdf->download('invoice.pdf');
     }
- 
+
 }
